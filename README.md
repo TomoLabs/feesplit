@@ -1,88 +1,133 @@
-🧩 TomoLabs – FeeToSplitter Hook A Revenue-Sharing Uniswap v4 Hook for Automated Fee Splitting
+TomoLabs – FeeToSplitter Hook
+A Revenue-Sharing Uniswap v4 Hook for Automated Fee Splitting
 
-This repository contains two smart contracts:
+This repository contains two smart contracts that together enable creator-aligned liquidity on Uniswap v4.
+Swap fees generated inside a pool are instantly routed and distributed to predefined recipients using basis-point (BPS) allocations.
 
-FeeSplitter.sol → Splits any ERC-20 token amount among recipients based on percentage shares.
+ Overview
 
-FeeToSplitterHook.sol → A Uniswap v4 Hook that intercepts swap fees and automatically routes them to the FeeSplitter contract.
+This module combines:
 
-Together, they implement creator-aligned liquidity, where fees earned in a Uniswap pool are immediately distributed to predefined recipients.
+FeeSplitter.sol – Splits any ERC-20 token among multiple recipients according to fixed percentages.
 
-🚀 Features ✔ Automatic fee sharing
+FeeToSplitterHook.sol – A Uniswap v4 Hook that intercepts swap fees and forwards them to the FeeSplitter in real time.
 
-Every time a swap occurs and fees are collected, the hook calls FeeSplitter.distribute().
+This system enables:
 
-✔ Basis-Point (BPS) share configuration
+Creator / partner revenue-sharing
 
-Total shares must always equal 10000 (100%).
+Automated LP fee routing
 
-✔ Flexible recipients
+DAO-native distribution pipelines
 
-You can specify any number of recipients (creators, LP managers, DAO multisigs, etc.).
+Transparent, programmable fee economics
 
-✔ Fully compatible with Uniswap v4 Hooks
+🔥 Key Features
+✔ Automatic Fee Sharing
 
-Implements the exact required 14-permission structure.
+On every swap, the hook reads the fee delta and calls:
 
-📦 Contracts
+FeeSplitter.distribute(token, amount);
 
-FeeSplitter.sol
-A lightweight contract that splits incoming tokens according to pre-configured BPS percentages.
 
-Constructor constructor(address[] memory _recipients, uint256[] memory _shares);
+Fees are shared immediately — no manual claim process.
 
-distribute() function distribute(address token, uint256 amount) external;
+✔ Basis-Point (BPS) Share Configuration
 
-This function transfers:
+Recipient percentages are defined in basis points:
 
-amount * share[i] / 10000
+10000 BPS = 100%
 
-to each recipient.
+Shares must sum to exactly 10000
+
+This ensures precise, tamper-proof distribution.
+
+✔ Flexible Recipients
+
+Supports any combination of:
+
+Creators
+
+DAO multisigs
+
+LP managers
+
+Protocol-owned wallets
+
+Foundation teams
+
+✔ Native Uniswap v4 Hook Integration
+
+Implements the exact v4 hook permission schema.
+Only afterSwap is enabled, keeping the hook minimal and gas-efficient.
+
+ Contracts
+### FeeSplitter.sol
+
+A minimal contract that distributes incoming ERC-20 tokens across recipients.
+
+Constructor
+
+constructor(address[] memory _recipients, uint256[] memory _shares);
+
+
+Distribution Function
+
+function distribute(address token, uint256 amount) external;
+
+
+Each recipient receives:
+
+(amount * share[i]) / 10000
 
 FeeToSplitterHook.sol
-A Uniswap v4 Hook that triggers after swaps (afterSwap). It detects positive fee deltas and passes them to FeeSplitter.
 
-Key Responsibilities:
+A Uniswap v4 hook that runs on every swap (afterSwap):
 
-Reads swap deltas
+Responsibilities:
 
-Extracts token-0 delta
+Reads swap fee deltas (delta.amount0())
 
-Calls FeeSplitter to distribute fees
+If positive fees exist, forwards them to FeeSplitter
 
-Only enables required Uniswap hook permissions
+Enables only necessary permissions
 
-🗂 Directory Structure src/ ├── FeeSplitter.sol └── FeeToSplitterHook.sol
+Integrates seamlessly with PoolManager
 
-script/ └── DeployFeeHook.s.sol
+This architecture ensures on-chain fee routing without needing any LP interaction.
 
-⚙️ Installation git clone https://github.com/TomoLabs/Hooks.git cd Hooks forge install forge build
+ Directory Structure
+src/
+│── FeeSplitter.sol
+└── FeeToSplitterHook.sol
 
-🔧 Configuration
+script/
+└── DeployFeeHook.s.sol
 
-You can adjust the following in the deploy script:
+ Configuration
 
-Pool Manager Address 0xA7B8e01F655C72F2fCf7b0b8F9E0633D5c86B8Dc
+Edit script/DeployFeeHook.s.sol to configure:
 
-Fee Token 0x00000000000000000000000000000000000000AA
+Parameter	Example	Description
+Pool Manager	0xA7B8e01F655C72F2fCf7b0b8F9E0633D5c86B8Dc	Uniswap v4 PoolManager address
+Fee Token	0x00000000000000000000000000000000000000AA	ERC-20 token to distribute fees in
+Recipients	0x27eB1474… 0x00000022…	Fee receivers
+Shares	6000 / 4000	60% + 40%
+ Installation
+git clone https://github.com/TomoLabs/Hooks.git
+cd Hooks
 
-Recipients 0x27eB14742eC8Fe485492A5B553ec9D13Db5F0Af4 0x0000000000000000000000000000000000000022
+forge install
+forge build
 
-Shares 6000 = 60% 4000 = 40%
-
-These are configured inside:
-
-script/DeployFeeHook.s.sol
-
-🚀 Deployment
-
-Run:
-
-forge script script/DeployFeeHook.s.sol --rpc-url --broadcast -vvvv
+ Deployment
 
 Example:
 
-forge script script/DeployFeeHook.s.sol --rpc-url https://sepolia.infura.io/v3/ --broadcast -vvvv
+forge script script/DeployFeeHook.s.sol \
+  --rpc-url https://sepolia.infura.io/v3/<key> \
+  --broadcast -vvvv
+
 
 This deploys:
 
@@ -90,46 +135,50 @@ FeeSplitter
 
 FeeToSplitterHook
 
-🧠 How It Works Step-by-step swap lifecycle:
+ How It Works (Swap Lifecycle)
 
-User swaps tokens in a Uniswap v4 pool
+User swaps in a Uniswap v4 pool.
 
-The hook receives the delta:
+PoolManager triggers the hook afterSwap.
+
+Hook reads the delta:
 
 delta.amount0()
 
-If amount0 > 0, meaning fees were collected: → the hook calls FeeSplitter:
+
+If positive fees were collected:
+→ The hook calls:
 
 splitter.distribute(feeToken, uint256(int256(amount0)));
 
-FeeSplitter divides fees among recipients based on basis-points (BPS)
 
-🔍 Example Log Event
+FeeSplitter distributes fees according to BPS percentages.
 
-When fees are distributed:
+ Example Log Event
+FeeDistributed(
+    token = 0x00000000000000000000000000000000000000AA,
+    totalAmount = 12345
+)
 
-FeeDistributed( token = 0x00000000000000000000000000000000000000AA, totalAmount = 12345 )
-
-🧪 Testing (Optional)
-
-Run:
-
+ Testing
 forge test -vvvv
 
-You can write tests to check:
 
-Fee splitting
+Recommended tests:
 
-Swap callbacks
+Correct fee splitting
 
-Permission matrix
+Hook permission validation
 
-Reverts when shares ≠ 10000
+Swap callback logic
+
+Revert when shares ≠ 10000
 
 📄 License
 
-MIT
+MIT License
 
-🏷 Credits
+ Credits
 
-Built by TomoLabs — creator-aligned Web3 liquidity infrastructure.
+Built by TomoLabs —
+Creator-aligned Web3 liquidity infrastructure.
