@@ -4,6 +4,12 @@
 
 TomoLabs converts Uniswap v4 swap fees into an autonomous on-chain debt repayment engine using a permissioned hook and a non-custodial expense ledger.
 
+ ✅ Live on Ethereum Mainnet  
+ ✅ Contracts Verified on Etherscan  
+ ✅ End-to-End Fee → Debt → Repayment Flow Operational  
+ ✅ Production-Grade Uniswap v4 Hook  
+
+
   ## OVERVIEW
 
 TomoLabs introduces a first-of-its-kind on-chain system where real-world group debt is repaid passively through DEX trading activity using programmable Uniswap v4 Hooks. Instead of relying on deadlines, reminders, or manual transfers, financial settlement is embedded directly into live market liquidity. This creates a new DeFi primitive: **Debt as a Function of Trading Volume** — where every swap becomes a settlement event.
@@ -326,6 +332,13 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
 - All debt updates are fully on-chain and verifiable.
 - No user funds are ever held in custody by the system.
 - All swap fees are pulled directly from the Uniswap v4 PoolManager.
+
+
+## Testing & Validation
+
+- Hook logic tested with Foundry
+- Fee capture and repayment validated on Ethereum mainnet
+- All state transitions are fully on-chain and verifiable via events
 
 
 ## References
