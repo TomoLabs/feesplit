@@ -72,10 +72,9 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
 
 4. Permissioned Auto-Repayment Security:
 
-   Only the authorized SplitwiseHook can trigger:
+   Only the authorized SplitwiseHook can trigger autoRepay().
 
-   1) autoRepay()
-   Protection includes:
+   1) Protection includes:
 
    2) On-chain hook verification
 
@@ -118,7 +117,8 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
 
 7. EigenLayer Restaking Compatibility:
 
-    Designed to plug into EigenLayer Liquid Restaking Tokens (LRTs) so swap fees can:
+    Designed to be compatible with EigenLayer Liquid Restaking Tokens (LRTs) so swap fees can:
+   
 
      1) Be restaked for yield
 
@@ -129,7 +129,7 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
      This transforms expense settlement into a yield-bearing primitive.
   
 
-8. Event-Driven On-Chain Transparency:   
+9. Event-Driven On-Chain Transparency:   
 
      Emits verifiable events for:
 
@@ -152,7 +152,7 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
       8) Real-time analytics
          
 
-9. Non-Custodial Fund Flow:
+10. Non-Custodial Fund Flow:
 
      Users never relinquish wallet control:
 
