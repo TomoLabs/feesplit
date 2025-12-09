@@ -282,7 +282,8 @@ USAGE GUIDE:
     Your DeFi activity becomes a continuous settlement engine.
    
 
-   ARCHITECTURE: 
+
+ARCHITECTURE: 
 
          ┌──────────── User Swap on Uniswap ─────────────┐
                                   │
@@ -316,5 +317,9 @@ USAGE GUIDE:
                     │  Event & Indexing Layer   │ ◄── The Graph / Dashboards
                     └───────────────────────────┘
 
-https://docs.uniswap.org/contracts/v4
+
+REFERENCES:
+
+   [Powered by Uniswap v4 Hooks](https://docs.uniswap.org/contracts/v4/overview)
+
 
