@@ -1,2 +1,6 @@
 
-![WhatsApp Image 2025-11-20 at 19 48 50_bf5686dc](https://github.com/user-attachments/assets/00bd3167-d3b5-488c-b54b-7bde803f8655)   TomoLabs
+TomoLabs
+
+Automate yield, protect liquidity, and power next-gen creator ecosystems with programmable Uniswap v4 Hooks and EigenLayer restaking.
+
+TomoLabs transforms passive swap fees into active, auto-compounding yield by routing Uniswap v4 pool fees directly into Liquid Restaking Token (LRT) strategies through a fully on-chain Yield Hook. Built on top of Uniswap v4 Hooks, EigenLayer restaking, and modular fee routers, TomoLabs enables MEV-protected trading, creator-owned liquidity, programmable yield distribution, and autonomous revenue flows across the decentralized economy.
