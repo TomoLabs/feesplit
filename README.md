@@ -327,9 +327,12 @@ SECURITY MODEL:
 - All swap fees are pulled directly from the Uniswap v4 PoolManager.
 
 
-REFERENCES:
+### References
 
-   [Powered by Uniswap v4 Hooks](https://docs.uniswap.org/contracts/v4/overview)
+- [EigenLayer](https://app.eigenlayer.xyz/)
+- [Uniswap v4 Hooks](https://docs.uniswap.org/contracts/v4/concepts/hooks)
+- [OpenZeppelin](https://www.openzeppelin.com/)
+
 
 
 ## 🔗 Mainnet Deployment (Ethereum)
