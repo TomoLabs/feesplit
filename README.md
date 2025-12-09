@@ -337,18 +337,18 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
 
 ## Mainnet Deployment (Ethereum)
 
-**Splitwise Core Contract (Debt Engine):**  
+   **Splitwise Core Contract (Debt Engine):**  
 
-`0x9e9ee1221867413486b8c4a21c185b09b5b28c2f`  
+             0x9e9ee1221867413486b8c4a21c185b09b5b28c2f  
 
-https://etherscan.io/address/0x9e9ee1221867413486b8c4a21c185b09b5b28c2f  
+   https://etherscan.io/address/0x9e9ee1221867413486b8c4a21c185b09b5b28c2f  
 
 
-**Splitwise Uniswap v4 Hook (Auto Fee Repayment):**  
+   **Splitwise Uniswap v4 Hook (Auto Fee Repayment):**  
 
-`0x910880539c2cdba3f538dbb753b698555d108040`  
+             0x910880539c2cdba3f538dbb753b698555d108040
 
-https://etherscan.io/address/0x910880539c2cdba3f538dbb753b698555d108040  
+   https://etherscan.io/address/0x910880539c2cdba3f538dbb753b698555d108040  
 
 
 
