@@ -318,6 +318,15 @@ ARCHITECTURE:
                     └───────────────────────────┘
 
 
+SECURITY MODEL:
+
+- The Splitwise contract only accepts autoRepay() calls from the authorized SplitwiseHook.
+- The hook is set once via setHook() and cannot be spoofed.
+- All debt updates are fully on-chain and verifiable.
+- No user funds are ever held in custody by the system.
+- All swap fees are pulled directly from the Uniswap v4 PoolManager.
+
+
 REFERENCES:
 
    [Powered by Uniswap v4 Hooks](https://docs.uniswap.org/contracts/v4/overview)
