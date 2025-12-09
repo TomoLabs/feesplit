@@ -1,5 +1,5 @@
 
-                                                    TomoLabs
+ TomoLabs
 
 TomoLabs converts Uniswap v4 swap fees into an autonomous on-chain debt repayment engine using a permissioned hook and a non-custodial expense ledger.
 
