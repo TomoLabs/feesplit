@@ -8,7 +8,8 @@ TomoLabs converts Uniswap v4 swap fees into an autonomous on-chain debt repaymen
  ✅ End-to-End Fee → Debt → Repayment Flow Operational  
  ✅ Production-Grade Uniswap v4 Hook  
 
- This hook is currently live and processing real economic activity on Ethereum mainnet.
+ This hook is live and deployed on Ethereum mainnet with fully verified contracts.
+
 
 
   ## OVERVIEW
