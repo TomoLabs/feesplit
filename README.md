@@ -1,11 +1,11 @@
 
                                                     TomoLabs
 
-  Automate yield, protect liquidity, and power next-gen creator ecosystems with programmable Uniswap v4 Hooks and EigenLayer restaking.
+TomoLabs converts Uniswap v4 swap fees into an autonomous on-chain debt repayment engine using a permissioned hook and a non-custodial expense ledger.
 
   OVERVIEW:
 
-TomoLabs transforms passive swap fees into active, auto-compounding yield by routing Uniswap v4 pool fees directly into Liquid Restaking Token (LRT) strategies through a fully on-chain Yield Hook. Built on top of Uniswap v4 Hooks, EigenLayer restaking, and modular fee routers, TomoLabs enables MEV-protected trading, creator-owned liquidity, programmable yield distribution, and autonomous revenue flows across the decentralized economy.
+TomoLabs introduces the first on-chain system where real-world style group debt is repaid passively through DEX trading activity using programmable Uniswap v4 Hooks. Instead of relying on deadlines, reminders, or manual transfers, financial settlement is embedded directly into live market liquidity. This creates a new DeFi primitive: **Debt as a Function of Trading Volume** — where every swap becomes a settlement event.
 
          ✨ Live Hook on Ethereum • ⚙️ Powered by Uniswap v4 Hooks • 🔗 EigenLayer Restaking Integrated 
 
