@@ -10,6 +10,7 @@ TomoLabs transforms passive swap fees into active, auto-compounding yield by rou
          ✨ Live Hook on Ethereum • ⚙️ Powered by Uniswap v4 Hooks • 🔗 EigenLayer Restaking Integrated 
 
   CORE PRINCIPLES:
+
 1.) Trustless Debt Settlement:
 All group expenses, member balances, and repayments are enforced entirely by smart contracts, eliminating reliance on off-chain trust, manual accounting, or centralized intermediaries.
 
