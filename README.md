@@ -3,13 +3,13 @@
 
 TomoLabs converts Uniswap v4 swap fees into an autonomous on-chain debt repayment engine using a permissioned hook and a non-custodial expense ledger.
 
-  OVERVIEW:
+  ## OVERVIEW
 
 TomoLabs introduces a first-of-its-kind on-chain system where real-world group debt is repaid passively through DEX trading activity using programmable Uniswap v4 Hooks. Instead of relying on deadlines, reminders, or manual transfers, financial settlement is embedded directly into live market liquidity. This creates a new DeFi primitive: **Debt as a Function of Trading Volume** — where every swap becomes a settlement event.
 
          ✨ Live Hook on Ethereum • ⚙️ Powered by Uniswap v4 Hooks • 🔗 EigenLayer Restaking Integrated 
 
-  CORE PRINCIPLES:
+  ## CORE PRINCIPLES
 
 1.) Trustless Debt Settlement:
 All group expenses, member balances, and repayments are enforced entirely by smart contracts, eliminating reliance on off-chain trust, manual accounting, or centralized intermediaries.
@@ -26,7 +26,7 @@ Users retain full control of their funds at all times, while sensitive repayment
 5.) Transparent, On-Chain Accountability:
 Every expense, repayment, and auto-settlement action is emitted as on-chain events, enabling block explorers, DAOs, and analytics tools to verify all financial flows in real time.
 
-  FEATURES:
+  ## FEATURES
 
 1. Trustless Group Expense Management:
 
@@ -178,7 +178,7 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
       Built for high-frequency swap environments.
 
 
-USAGE GUIDE:
+## USAGE GUIDE
 
 
 1. Create an On-Chain Expense Group:
@@ -283,7 +283,7 @@ USAGE GUIDE:
    
 
 
-ARCHITECTURE: 
+## ARCHITECTURE 
 
          ┌──────────── User Swap on Uniswap ─────────────┐
                                   │
@@ -318,7 +318,7 @@ ARCHITECTURE:
                     └───────────────────────────┘
 
 
-SECURITY MODEL:
+## SECURITY MODEL
 
 - The Splitwise contract only accepts autoRepay() calls from the authorized SplitwiseHook.
 - The hook is set once via setHook() and cannot be spoofed.
@@ -327,7 +327,7 @@ SECURITY MODEL:
 - All swap fees are pulled directly from the Uniswap v4 PoolManager.
 
 
-### References
+## References
 
 - [EigenLayer](https://app.eigenlayer.xyz/)
 - [Uniswap v4 Hooks](https://docs.uniswap.org/contracts/v4/concepts/hooks)
@@ -335,7 +335,7 @@ SECURITY MODEL:
 
 
 
-## 🔗 Mainnet Deployment (Ethereum)
+## Mainnet Deployment (Ethereum)
 
 **Splitwise Core Contract (Debt Engine):**  
 
