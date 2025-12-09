@@ -280,6 +280,9 @@ USAGE GUIDE:
       3) Groups settle expenses without requiring members to take any manual action
 
     Your DeFi activity becomes a continuous settlement engine.
+   
+
+   ARCHITECTURE: 
 
          ┌──────────── User Swap on Uniswap ─────────────┐
                                   │
