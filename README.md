@@ -281,4 +281,37 @@ USAGE GUIDE:
 
     Your DeFi activity becomes a continuous settlement engine.
 
+         ┌──────────── User Swap on Uniswap ─────────────┐
+                                  │
+                        ┌─────────▼─────────┐
+                        │  Uniswap v4 Pool  │
+                        │  (Liquidity AMM)  │
+                        └─────────┬─────────┘
+                                  │ afterSwap()
+                        ┌─────────▼─────────┐
+                        │  SplitwiseHook    │ ◄── Hook Authorization
+                        │  (Automation)     │
+                        └─────────┬─────────┘
+                                  │ PoolManager.take()
+                        ┌─────────▼─────────┐
+                        │  Fee Extraction   │ ◄── Token0 / Token1 Logic
+                        └─────────┬─────────┘
+                                  │ autoRepay()
+                 ┌────────────────▼────────────────┐
+                 │        Splitwise Contract        │ ◄── On-chain Debt Ledger
+                 │  - Groups & Members              │
+                 │  - Expense Tracking               │
+                 │  - Per-User Debt Balances         │
+                 │  - Manual + Auto Repayment        │
+                 └───────────────┬───────────────────┘
+                                  │
+                    ┌─────────────▼─────────────┐
+                    │  Bill Payer Settlement    │ ◄── Trading fees reduce debt
+                    └─────────────┬─────────────┘
+                                  │
+                    ┌─────────────▼─────────────┐
+                    │  Event & Indexing Layer   │ ◄── The Graph / Dashboards
+                    └───────────────────────────┘
+
+
 
