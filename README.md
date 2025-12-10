@@ -16,7 +16,7 @@ TomoLabs converts Uniswap v4 swap fees into an autonomous on-chain debt repaymen
 
 TomoLabs introduces a first-of-its-kind on-chain system where real-world group debt is repaid passively through DEX trading activity using programmable Uniswap v4 Hooks. Instead of relying on deadlines, reminders, or manual transfers, financial settlement is embedded directly into live market liquidity. This creates a new DeFi primitive: **Debt as a Function of Trading Volume** — where every swap becomes a settlement event.
 
-         ✨ Live Hook on Ethereum • ⚙️ Powered by Uniswap v4 Hooks • 🔗 EigenLayer Restaking Integrated 
+         ✨ Live Hook on Ethereum • ⚙️ Powered by Uniswap v4 Hooks  
 
   ## CORE PRINCIPLES
 
@@ -124,21 +124,9 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
     5) Segmented settlement per asset class
   
 
-7. EigenLayer Restaking Compatibility:
 
-    Designed to be compatible with EigenLayer Liquid Restaking Tokens (LRTs) so swap fees can:
-   
 
-     1) Be restaked for yield
-
-     2) Auto-compound
-
-     3) Funnel yield back into Splitwise as additional debt repayments
-   
-     This transforms expense settlement into a yield-bearing primitive.
-  
-
-9. Event-Driven On-Chain Transparency:   
+7. Event-Driven On-Chain Transparency:   
 
      Emits verifiable events for:
 
@@ -161,7 +149,7 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
       8) Real-time analytics
          
 
-10. Non-Custodial Fund Flow:
+8. Non-Custodial Fund Flow:
 
      Users never relinquish wallet control:
 
@@ -174,7 +162,7 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
       Fully aligned with DeFi self-sovereignty principles.
    
 
-11. Gas-Efficient Settlement Design:
+9. Gas-Efficient Settlement Design:
 
       Optimized for:
     
