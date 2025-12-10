@@ -1,15 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-/// @notice On-chain Splitwise: groups, expenses, manual repayment, and hook-driven automatic repayment.
-/// - Equal split only (can be extended).
-/// - Tracks debts as owed[debtor][creditor].
-/// - autoRepay(...) is callable only by the configured hook and will:
-///    1) accept tokens already transferred to this contract by the caller (hook),
-///    2) reduce outstanding debts owed to `payer` proportionally,
-///    3) forward the tokens to the `payer`.
-/// NOTE: This contract expects the hook to transfer tokens to this contract before / during the call
-/// (e.g. the hook can do IERC20(token).safeTransfer(address(splitwise), amount); then call autoRepay).
+
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
@@ -61,10 +53,8 @@ contract Splitwise is Ownable, ReentrancyGuard {
         emit HookSet(_hook);
     }
 
-    /// -----------------------------------------------------------------------
     /// Group & Expense management
-    /// -----------------------------------------------------------------------
-    /// @notice Create a group of participants. members must be unique and length >= 2
+    
     function createGroup(address[] calldata members) external returns (uint256) {
         require(members.length >= 2, "need >=2");
         // basic duplication check (cheap)
@@ -81,8 +71,7 @@ contract Splitwise is Ownable, ReentrancyGuard {
         return gid;
     }
 
-    /// @notice Add an expense where `payer` paid `totalAmount` for the group. Splits equally among group members.
-    /// Each non-payer member will owe payer: share = totalAmount / members.length
+    
     function addExpense(uint256 groupId, address token, uint256 totalAmount, address payer) external {
         require(groups[groupId].exists, "group not found");
         Group storage g = groups[groupId];
@@ -105,9 +94,9 @@ contract Splitwise is Ownable, ReentrancyGuard {
         emit ExpenseAdded(groupId, payer, totalAmount, token);
     }
 
-    /// -----------------------------------------------------------------------
+    
     /// Debt bookkeeping helpers
-    /// -----------------------------------------------------------------------
+    
     function _increaseDebt(address debtor, address creditor, uint256 amount) internal {
         if (amount == 0) return;
         if (owed[debtor][creditor] == 0) {
@@ -151,10 +140,9 @@ contract Splitwise is Ownable, ReentrancyGuard {
         return false;
     }
 
-    /// -----------------------------------------------------------------------
+    
     /// Manual repayment by debtor (transfers tokens to creditor)
-    /// -----------------------------------------------------------------------
-    /// @notice Debtor calls this to repay `amount` of `token` to `creditor`. The contract will pull tokens from debtor and forward to creditor.
+    
     function repay(address creditor, address token, uint256 amount) external nonReentrant {
         address debtor = msg.sender;
         require(amount > 0, "amount zero");
@@ -171,15 +159,9 @@ contract Splitwise is Ownable, ReentrancyGuard {
         emit ManualRepayment(debtor, creditor, token, pay);
     }
 
-    /// -----------------------------------------------------------------------
+    
     /// Auto repayment called by hook after sending tokens to this contract
-    /// -----------------------------------------------------------------------
-    /// @notice Called by authorized hook when tokens were forwarded to this contract for `payer`. This function:
-    ///    - reads `amount` of `token` already held by this contract (assumed transferred by caller),
-    ///    - reduces debts owed to `payer` proportionally among their debtors,
-    ///    - forwards the incoming `amount` to `payer`.
-    ///
-    /// Security: only the configured hook address can call this.
+    
     function autoRepay(address payer, address token, uint256 amount) external nonReentrant {
         require(msg.sender == hook, "only hook");
         require(amount > 0, "amount zero");
@@ -217,16 +199,14 @@ contract Splitwise is Ownable, ReentrancyGuard {
             distributed += share;
         }
 
-        // send distributed shares to payer (we can send the full amount; payer receives the full amount, but we reduced debts by distributed)
-        // note: any dust (amount - distributed) we still forward to payer as extra amount
+        
         IERC20(token).safeTransfer(payer, amount);
 
         emit AutoRepayment(payer, token, amount);
     }
 
-    /// -----------------------------------------------------------------------
     /// View helpers
-    /// -----------------------------------------------------------------------
+
     function getGroupMembers(uint256 groupId) external view returns (address[] memory) {
         return groups[groupId].members;
     }
@@ -239,3 +219,4 @@ contract Splitwise is Ownable, ReentrancyGuard {
         return owed[debtor][creditor];
     }
 }
+
