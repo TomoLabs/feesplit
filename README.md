@@ -363,6 +363,11 @@ Install Foundry:
 - All state transitions are fully on-chain and verifiable via events
 
 
+## Partner Integrations
+
+- **Uniswap v4 Hooks** – afterSwap-based protocol-level fee capture and fee routing
+
+
 ## References
 
 - [Uniswap v4 Hooks](https://docs.uniswap.org/contracts/v4/concepts/hooks)
