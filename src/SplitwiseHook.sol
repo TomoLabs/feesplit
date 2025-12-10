@@ -68,21 +68,21 @@ contract SplitwiseHook is BaseHook {
         int128 amount0 = delta.amount0();
         int128 amount1 = delta.amount1();
 
-        // ✅ TOKEN 0 FEE
+        //  TOKEN 0 FEE
         if (amount0 > 0) {
             uint256 amt0 = uint256(int256(amount0));
 
-            // ✅ Pull fee from PoolManager to this hook
+            // Pull fee from PoolManager to this hook
             poolManager.take(poolKey.currency0, address(this), amt0);
 
-            // ✅ Forward to Splitwise
+            // Forward to Splitwise
             IERC20(token0).safeTransfer(address(splitwise), amt0);
 
-            // ✅ Apply auto repayment
+            // Apply auto repayment
             splitwise.autoRepay(payer, token0, amt0);
         }
 
-        // ✅ TOKEN 1 FEE
+        // TOKEN 1 FEE
         if (amount1 > 0) {
             uint256 amt1 = uint256(int256(amount1));
 
@@ -94,3 +94,4 @@ contract SplitwiseHook is BaseHook {
         return (BaseHook.afterSwap.selector, 0);
     }
 }
+
