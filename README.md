@@ -18,6 +18,13 @@ TomoLabs introduces a first-of-its-kind on-chain system where real-world group d
 
          ✨ Live Hook on Ethereum • ⚙️ Powered by Uniswap v4 Hooks  
 
+  ## Demo Video
+
+🎥 Demo & Technical Walkthrough:
+
+https://youtu.be/kkD-mo4hR3s?si=eru3pAn1B_A_1Q2S
+
+
   ## CORE PRINCIPLES
 
 1.) Trustless Debt Settlement:
