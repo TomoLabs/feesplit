@@ -103,7 +103,7 @@ contract SplitwiseTest is Test {
         vm.prank(ALICE);
         splitwise.repay(PAYER, address(token), 60);
 
-        // FIX: The remaining debt must be 0 since the full debt of 50 was covered.
+        // The remaining debt must be 0 since the full debt of 50 was covered.
         assertEq(splitwise.getOwed(ALICE, PAYER), 0, "Remaining debt must be 0 after full repayment");
     }
 
@@ -130,7 +130,7 @@ contract SplitwiseTest is Test {
         uint256 gid = splitwise.createGroup(members);
         splitwise.addExpense(gid, address(token), 100, PAYER);
 
-        // FIX 1: Transfer tokens to the Test contract so it has the balance to transfer to Splitwise.
+        // Transfer tokens to the Test contract so it has the balance to transfer to Splitwise.
         vm.prank(ALICE);
         token.transfer(address(this), 70); 
 
@@ -141,7 +141,7 @@ contract SplitwiseTest is Test {
         // Alice owes 50, so 50 will be applied from the 70 balance.
         splitwise.autoRepay(PAYER, address(token), 70); 
 
-        // FIX 2: The remaining debt must be 0 since the full debt of 50 was covered.
+        // The remaining debt must be 0 since the full debt of 50 was covered.
         assertEq(splitwise.getOwed(ALICE, PAYER), 0, "Remaining debt must be 0 after full repayment");
     }
 }
