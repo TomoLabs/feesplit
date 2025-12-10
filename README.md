@@ -333,7 +333,6 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
 
 ## References
 
-- [EigenLayer](https://app.eigenlayer.xyz/)
 - [Uniswap v4 Hooks](https://docs.uniswap.org/contracts/v4/concepts/hooks)
 - [OpenZeppelin](https://www.openzeppelin.com/)
 
