@@ -25,7 +25,7 @@ TomoLabs introduces a first-of-its-kind on-chain system where real-world group d
 https://youtu.be/kkD-mo4hR3s?si=eru3pAn1B_A_1Q2S
 
 
-## Hookathon Work Disclaimer
+## Hookathon Work
 
 All Uniswap v4 Hook logic, automated fee-to-debt repayment flow, permissioned hook system, and Foundry test suite were created during the Hookathon period. The system extends basic expense ledger concepts with entirely new Hook-based automation, written specifically for this cohort.
 
