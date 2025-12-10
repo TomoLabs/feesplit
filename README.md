@@ -298,11 +298,12 @@ This project uses Foundry for testing.
 
 Install Foundry:
 
-```bash
+
               curl -L https://foundry.paradigm.xyz | bash
               foundryup
 
               forge test -vvvv
+
 
 
    
