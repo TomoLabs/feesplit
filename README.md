@@ -25,6 +25,12 @@ TomoLabs introduces a first-of-its-kind on-chain system where real-world group d
 https://youtu.be/kkD-mo4hR3s?si=eru3pAn1B_A_1Q2S
 
 
+## Hookathon Work Disclaimer
+
+All Uniswap v4 Hook logic, automated fee-to-debt repayment flow, permissioned hook system, and Foundry test suite were created during the Hookathon period. The system extends basic expense ledger concepts with entirely new Hook-based automation, written specifically for this cohort.
+
+
+
   ## CORE PRINCIPLES
 
 1.) Trustless Debt Settlement:
@@ -284,6 +290,21 @@ Every expense, repayment, and auto-settlement action is emitted as on-chain even
       3) Groups settle expenses without requiring members to take any manual action
 
     Your DeFi activity becomes a continuous settlement engine.
+
+
+## Running Tests
+
+This project uses Foundry for testing.
+
+Install Foundry:
+
+```bash
+              curl -L https://foundry.paradigm.xyz | bash
+              foundryup
+
+              forge test -vvvv
+
+
    
 
 
