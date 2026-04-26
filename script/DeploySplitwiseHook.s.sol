@@ -7,7 +7,7 @@ import {IPoolManager} from "@uniswap/v4-core/src/interfaces/IPoolManager.sol";
 import {Hooks} from "@uniswap/v4-core/src/libraries/Hooks.sol";
 import {HookMiner} from "v4-periphery/utils/HookMiner.sol";
 
-import {Splitwise} from "../src/Splitwise.sol";
+import {Splitwise} from "../contracts/Splitwise.sol";
 import {SplitwiseHook} from "../src/SplitwiseHook.sol";
 import {ISplitwise} from "../src/SplitwiseHook.sol";
 
