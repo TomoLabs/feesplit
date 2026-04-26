@@ -2,7 +2,7 @@
 pragma solidity ^0.8.26;
 
 import "forge-std/Test.sol";
-import "../src/splitwise.sol";
+import "../src/Splitwise.sol";
 
 // Mock ERC20 contract for testing token transfers
 contract MockERC20 {
